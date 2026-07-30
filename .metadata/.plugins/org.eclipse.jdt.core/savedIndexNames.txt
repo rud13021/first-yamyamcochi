@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+C:\Users\SSAFY\Desktop\first-yamyamcochi\.metadata\.plugins\org.eclipse.jdt.core
-897674797.index
-2984411515.index
-1865797976.index
-3235140872.index
