@@ -625,3 +625,6 @@ org.eclipse.ui.PartInitException: Invalid Input: C:\Users\SSAFY\Desktop\first-ya
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1415)
 !SUBENTRY 1 org.eclipse.ui 4 0 2026-07-30 12:02:22.246
 !MESSAGE Invalid Input: C:\Users\SSAFY\Desktop\first-yamyamcochi\Java_P_PJT\~$20241227_음식DB.xlsx. Input must also exist in the filesystem
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2026-07-30 12:24:27.543
+!MESSAGE No search provider was registered. Tasks search is not available.
