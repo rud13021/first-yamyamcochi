@@ -7,14 +7,17 @@ public class HealthProfile {
 	private String goal; // 목표
 	
 	public HealthProfile() {
+		this.height = 0;
+		this.weight = 0;
+		this.goal = "미설정";
 	}
 	
-	public HealthProfile (double height, double weight, String goal) {
+	public HealthProfile(double height, double weight, String goal) {
 		this.height = height;
 		this.weight = weight;
 		this.goal = goal;
 	}
-
+	
 	//----------------------------
 	
 	public double getHeight() {
