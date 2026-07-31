@@ -15,8 +15,13 @@ public class FoodManager {
 
 	private FoodRepository repo = new FoodRepository();
 	
-	public void loadTestFoodsCsv() {
-		repo.loadTestFoodsCsv();
+	
+	public void loadFoodsFromCsv(String path) {
+		repo.loadFoodsFromCsv(path);
+	}
+	
+	public int getMealRecordCount() {
+	    return repo.getMealRecordCount();
 	}
 	//////
 	
@@ -126,6 +131,8 @@ public class FoodManager {
 	    repo.addMealRecord(record);
 	}
 	// 실제 저장 로직은 Repository에 있다. 
+	
+	
 	
 	///식단 조회
 	// 6. 식단 전체 목록 기본 조회(저장된 식단들이 뭐가 있는지 보는 화면)

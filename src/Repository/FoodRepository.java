@@ -39,20 +39,21 @@ public class FoodRepository {
 	public int getMealRecordCount() {
 		return mealRecords.size();
 	}
-	///////////
-	// 임시 더미데이터, 엑셀 연동 후 삭제
-	public void loadTestFoods() {
-		foods.add(new Food("F001", "국밥_돼지머리", "100g", 137, 6.7, 15.94, 5.16, 0.63, 181));
-		foods.add(new Food("F002", "국밥_순대국밥", "100g", 75, 3.17, 10.38, 2.28, 0.48, 126));
-		foods.add(new Food("F003", "국밥_콩나물", "100g", 52, 1.45, 10.93, 0.24, 0.56, 172));
-		foods.add(new Food("F004", "김치찌개", "100g", 61, 3.2, 4.8, 3.1, 1.2, 420));
-		foods.add(new Food("F005", "된장찌개", "100g", 78, 5.1, 6.3, 3.8, 1.0, 390));
-		foods.add(new Food("F006", "계란후라이", "100g", 196, 13.5, 1.1, 15.3, 0.4, 152));
-	}
 	
-	public void printFoods() {
-		System.out.println(foods);
-	}
+	///////////
+//	// 임시 더미데이터, 엑셀 연동 후 삭제
+//	public void loadTestFoods() {
+//		foods.add(new Food("F001", "국밥_돼지머리", "100g", 137, 6.7, 15.94, 5.16, 0.63, 181));
+//		foods.add(new Food("F002", "국밥_순대국밥", "100g", 75, 3.17, 10.38, 2.28, 0.48, 126));
+//		foods.add(new Food("F003", "국밥_콩나물", "100g", 52, 1.45, 10.93, 0.24, 0.56, 172));
+//		foods.add(new Food("F004", "김치찌개", "100g", 61, 3.2, 4.8, 3.1, 1.2, 420));
+//		foods.add(new Food("F005", "된장찌개", "100g", 78, 5.1, 6.3, 3.8, 1.0, 390));
+//		foods.add(new Food("F006", "계란후라이", "100g", 196, 13.5, 1.1, 15.3, 0.4, 152));
+//	}
+//	
+//	public void printFoods() {
+//		System.out.println(foods);
+//	}
 	
 	// 1. 음식명 검색 결과 최대 5개까지 리스트로 만들어서 반환하는 메소드
 	public List<Food> searchFoods(String keyword) {

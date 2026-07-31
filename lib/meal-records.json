@@ -1,0 +1,74 @@
+[
+  {
+    "mealId": 1,
+    "userId": 2,
+    "date": "2026-08-01",
+    "mealType": "점심",
+    "items": [
+      {
+        "food": {
+          "foodCode": "D110-469210000-0001",
+          "foodName": "마늘쫑볶음_멸치",
+          "servingSize": "100g",
+          "calorie": 117.0,
+          "protein": 7.54,
+          "carbohydrate": 2.78,
+          "fat": 2.54,
+          "sugar": 15.42,
+          "sodium": 7.0
+        },
+        "amountGram": 300.0
+      },
+      {
+        "food": {
+          "foodCode": "D106-277181600-0001",
+          "foodName": "두부찌개_소고기_된장",
+          "servingSize": "100g",
+          "calorie": 55.0,
+          "protein": 5.71,
+          "carbohydrate": 1.98,
+          "fat": 1.15,
+          "sugar": 3.5,
+          "sodium": 0.0
+        },
+        "amountGram": 200.0
+      }
+    ]
+  },
+  {
+    "mealId": 2,
+    "userId": 2,
+    "date": "2026-07-31",
+    "mealType": "아침",
+    "items": [
+      {
+        "food": {
+          "foodCode": "D106-266100000-0001",
+          "foodName": "김치찌개_돼지고기",
+          "servingSize": "100g",
+          "calorie": 45.0,
+          "protein": 4.25,
+          "carbohydrate": 2.71,
+          "fat": 0.96,
+          "sugar": 1.04,
+          "sodium": 0.0
+        },
+        "amountGram": 300.0
+      },
+      {
+        "food": {
+          "foodCode": "D103-150060000-0001",
+          "foodName": "만두_김치만두",
+          "servingSize": "100g",
+          "calorie": 152.0,
+          "protein": 10.24,
+          "carbohydrate": 4.76,
+          "fat": 1.6,
+          "sugar": 17.02,
+          "sodium": 0.0
+        },
+        "amountGram": 400.0
+      }
+    ]
+  }
+]

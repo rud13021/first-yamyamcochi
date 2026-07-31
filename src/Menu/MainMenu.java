@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import DTO.HealthProfile;
+import DTO.MealRecord;
 import DTO.User;
+import Manager.FoodManager;
 import Manager.UserManager;
 
 public class MainMenu {
 	public static void main(String[] args) {
 
 		UserManager userManager = UserManager.getManager();
+		FoodManager foodManager = new FoodManager();
+		foodManager.loadFoodsFromCsv("20241227_음식DB.csv");
+		foodManager.loadMealRecordsFromJson("lib/meal-records.json");
         Scanner sc = new Scanner(System.in);
 
         while(true) {
@@ -227,13 +232,8 @@ public class MainMenu {
         			break;
         		case 6:
         			// 식단 관리
-        			
-        			
-        			
-        			
-        			
-        			
-        			
+        			mealMenu(sc, foodManager, loginUser);   			
+        			break;
         		case 7:
         			// 로그아웃
                 	result = userManager.logout();
@@ -242,7 +242,9 @@ public class MainMenu {
                 	} else {
                 		System.out.println("로그아웃 실패. 다시 시도해 주세요.");
                 	}
+                	break;
         		case 0:
+        			foodManager.saveMealRecordsToJson("lib/meal-records.json");
         			return;
                 }
         		
@@ -250,5 +252,94 @@ public class MainMenu {
     	
         }
 		
+	}//main 끝
+	
+	// 식단 관리 메서드
+	private static void mealMenu(Scanner sc, FoodManager foodManager, User loginUser) {
+	    while (true) {
+	        System.out.println("==========식단 관리==========");
+	        System.out.println(" [1] 식단 작성");
+	        System.out.println(" [2] 전체 식단 조회");
+	        System.out.println(" [3] 식단 상세 조회");
+	        System.out.println(" [4] 식단 수정");
+	        System.out.println(" [5] 식단 삭제");
+	        System.out.println(" [6] 식단 분석");
+	        System.out.println(" [0] 뒤로가기");
+	        System.out.print("메뉴 선택 ▶ ");
+
+	        while (!sc.hasNextInt()) {
+	            System.out.println("숫자로 입력해주세요.");
+	            sc.next();
+	        }
+	        
+	        int menu = sc.nextInt();
+
+	        switch (menu) {
+	        case 1:
+	            System.out.print("날짜 입력 예: 2026-07-31 ▶ ");
+	            String date = sc.next();
+
+	            System.out.print("끼니 입력 예: 아침/점심/저녁/간식 ▶ ");
+	            String mealType = sc.next();
+
+	            int mealId = foodManager.getMealRecordCount() + 1;
+	            int userId = loginUser.getId();
+
+	            MealRecord record = foodManager.createMealRecord(mealId, userId, date, mealType);
+	            foodManager.addMealRecord(record);
+	            foodManager.saveMealRecordsToJson("lib/meal-records.json");
+	            System.out.println("식단 기록이 저장되었습니다.");
+	            break;
+
+	        case 2:
+	            foodManager.showAllMealRecords();
+	            break;
+
+	        case 3:
+	            System.out.print("조회할 식단 ID 입력 ▶ ");
+	            while (!sc.hasNextInt()) {
+	                System.out.println("숫자로 입력해주세요.");
+	                sc.next();
+	            }
+	            foodManager.showMealRecordDetail(sc.nextInt());
+	            break;
+
+	        case 4:
+	            System.out.print("수정할 식단 ID 입력 ▶ ");
+	            while (!sc.hasNextInt()) {
+	                System.out.println("숫자로 입력해주세요.");
+	                sc.next();
+	            }
+	            foodManager.updateMealRecord(sc.nextInt());
+	            foodManager.saveMealRecordsToJson("lib/meal-records.json");
+	            break;
+
+	        case 5:
+	            System.out.print("삭제할 식단 ID 입력 ▶ ");
+	            while (!sc.hasNextInt()) {
+	                System.out.println("숫자로 입력해주세요.");
+	                sc.next();
+	            }
+	            foodManager.deleteMealRecord(sc.nextInt());
+	            foodManager.saveMealRecordsToJson("lib/meal-records.json");
+	            break;
+
+	        case 6:
+	            System.out.print("분석할 식단 ID 입력 ▶ ");
+	            while (!sc.hasNextInt()) {
+	                System.out.println("숫자로 입력해주세요.");
+	                sc.next();
+	            }
+	            foodManager.analyzeMealRecord(sc.nextInt());
+	            break;
+
+	        case 0:
+	            return;
+
+	        default:
+	            System.out.println("잘못된 메뉴입니다.");
+	        }
+	    }
 	}
+
 }
