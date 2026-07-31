@@ -1,7 +1,6 @@
 package DTO;
 
 public class User {
-<<<<<<< HEAD
 
 	private static int cnt = 0; // User 객체 개수 카운터
 	private int id; // 고유번호
@@ -9,7 +8,7 @@ public class User {
 	private String password; // 비밀번호
 	private String name; // 이름
 	private HealthProfile profile; // 건강 프로필
-=======
+
 	
 	public User() {
 	}

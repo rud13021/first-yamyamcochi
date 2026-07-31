@@ -1,4 +1,9 @@
+# Eclipse
 .metadata/
-Java_P_PJT/bin/
+.classpath
+.project
+.settings/
+
+# Java build
+bin/
 *.class
-*.log
