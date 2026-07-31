@@ -1,0 +1,1 @@
+[{"id":1,"userId":"admin","password":"admin","name":"admin","profile":{"height":0.0,"weight":0.0,"goal":"미설정"}},{"id":2,"userId":"user01","password":"user01","name":"사용자01","profile":{"height":0.0,"weight":0.0,"goal":"미설정"}},{"id":3,"userId":"user02","password":"user02","name":"사용자02","profile":{"height":168.0,"weight":55.0,"goal":"체중감량"}}]

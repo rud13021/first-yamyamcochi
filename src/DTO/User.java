@@ -23,6 +23,7 @@ public class User {
 
 	//-------------------------------------------------------------------
 
+	// 고유번호 유지
 	public static void setCnt(int maxId) {
 	    cnt = maxId;
 	}

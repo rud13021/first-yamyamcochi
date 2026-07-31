@@ -4,16 +4,30 @@ import java.util.ArrayList;
 
 import DTO.HealthProfile;
 import DTO.User;
+import Repository.UserRepository;
 
 public class UserManager {
 
 	// User들 저장하는 userList
-	private ArrayList<User> userList = new ArrayList<>();
+	private ArrayList<User> userList;
 	
 	// manager 객체 생성 - 싱글톤
 	private static UserManager manager = new UserManager();
 
 	private UserManager() {
+	    // JSON 파일에서 기존 회원 불러오기
+		userList = UserRepository.loadUsers();
+		
+	    // 고유번호 유지를 위해 가장 큰 id 찾기
+	    int maxId = 0;
+
+	    for (User user : userList) {
+	        if (user.getId() > maxId)
+	            maxId = user.getId();
+	    }
+
+	    // 다음 회원 가입 시 중복되지 않도록 cnt 갱신
+	    User.setCnt(maxId);
 	}
 
 	public static UserManager getManager() {
@@ -59,7 +73,7 @@ public class UserManager {
 	}
 	
 
-	// 2. addUser : 회원 추가
+	// 2. addUser : 회원가입 (회원 추가)
 	public boolean addUser(User user) {
 		// 아이디 중복 검사
 		if (searchByUserId(user.getUserId()) != null)
@@ -71,6 +85,7 @@ public class UserManager {
 		
 		// 아이디 중복 X & 100명 이하면 User 추가
 		userList.add(user);
+		UserRepository.saveUsers(userList);
 		return true;
 	}
 
@@ -80,6 +95,7 @@ public class UserManager {
 		if (!checkLogin(id))
 			return false;
 		loginUser.setName(name);
+	    UserRepository.saveUsers(userList);
 		return true;
 	}
 	
@@ -88,6 +104,7 @@ public class UserManager {
 		if (!checkLogin(id))
 			return false;
 		loginUser.setPassword(password);
+	    UserRepository.saveUsers(userList);
 		return true;
 	}
 	
@@ -96,16 +113,15 @@ public class UserManager {
 		if (!checkLogin(id))
 			return false;
 		loginUser.setProfile(profile);
+	    UserRepository.saveUsers(userList);
 		return true;
 	}
 	
 	
 	// 4. removeUser : 회원 삭제
 	public boolean removeUser(int id) {
-		if (!checkLogin(id))
-			return false;
-		userList.remove(loginUser);
-		loginUser = null;
+		userList.remove(searchById(id));
+	    UserRepository.saveUsers(userList);
 		return true;
 	}
 	
